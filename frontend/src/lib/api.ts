@@ -38,8 +38,9 @@ export interface DetectionData {
   count: number
   count_confidence: number
   scenario: string
-  actual_people: number
-  rssi_mean: number
+  actual_people?: number
+  rssi_mean?: number
+  features?: Record<string, number>
 }
 
 /**
@@ -133,5 +134,113 @@ export async function getHealthStatus(): Promise<{
   } catch (error) {
     console.error('Failed to fetch health:', error)
     return null
+  }
+}
+
+/**
+ * Room layout types
+ */
+export interface WallSegment {
+  start: { x: number; y: number }
+  end: { x: number; y: number }
+  material: string
+  thickness: number
+  confidence: number
+}
+
+export interface RoomLayout {
+  walls: WallSegment[]
+  dimensions: { width: number; length: number }
+  area: number
+  corners: Array<{ x: number; y: number }>
+  timestamp: string
+}
+
+/**
+ * Fetch room layout data
+ */
+export async function getRoomLayout(): Promise<RoomLayout | null> {
+  try {
+    const API_BASE_URL = getApiBaseUrl()
+    const url = `${API_BASE_URL}/api/v1/room-layout`
+    console.log('[API] Fetching room layout from:', url)
+
+    const response = await fetch(url)
+    if (!response.ok) {
+      console.error('[API] Response not OK:', response.status, response.statusText)
+      return null
+    }
+    const data = await response.json()
+
+    // Check if it's an error message
+    if ('message' in data && (data.message === 'No room layout available' || data.detail)) {
+      return null
+    }
+
+    console.log('[API] Successfully fetched room layout')
+    return data as RoomLayout
+  } catch (error) {
+    console.error('[API] Failed to fetch room layout:', error)
+    return null
+  }
+}
+
+/**
+ * Fetch wall detection heatmap
+ */
+export async function getWallHeatmap(): Promise<number[][] | null> {
+  try {
+    const API_BASE_URL = getApiBaseUrl()
+    const url = `${API_BASE_URL}/api/v1/room-layout/heatmap`
+    console.log('[API] Fetching wall heatmap from:', url)
+
+    const response = await fetch(url)
+    if (!response.ok) {
+      console.error('[API] Response not OK:', response.status, response.statusText)
+      return null
+    }
+    const data = await response.json()
+
+    // Check if it's an error message
+    if ('message' in data || 'detail' in data) {
+      return null
+    }
+
+    console.log('[API] Successfully fetched wall heatmap')
+    return data as number[][]
+  } catch (error) {
+    console.error('[API] Failed to fetch wall heatmap:', error)
+    return null
+  }
+}
+
+/**
+ * Trigger room calibration
+ */
+export async function calibrateRoomLayout(): Promise<{ success: boolean; message?: string }> {
+  try {
+    const API_BASE_URL = getApiBaseUrl()
+    const url = `${API_BASE_URL}/api/v1/room-layout/calibrate`
+    console.log('[API] Triggering room calibration:', url)
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+      console.log('[API] Calibration successful:', data)
+      return { success: true, message: data.message || 'Calibration started' }
+    } else {
+      const error = await response.json()
+      console.error('[API] Calibration failed:', error)
+      return { success: false, message: error.detail || error.message || 'Calibration failed' }
+    }
+  } catch (error) {
+    console.error('[API] Failed to calibrate room:', error)
+    return { success: false, message: 'Failed to connect to server' }
   }
 }

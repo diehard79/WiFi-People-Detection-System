@@ -16,6 +16,13 @@ import numpy as np
 from src.wifi_simulator import WiFiRSSISimulator
 from src.signal_processing import SignalProcessor
 from src.ml_models import PeopleDetectorML
+from src.spatial_mapper import (
+    RoomLayoutMapper,
+    WallVisualizer,
+    generate_svg_floorplan,
+    RoomLayout,
+    create_sample_wall_grid
+)
 
 # Configure logging
 logging.basicConfig(
@@ -44,7 +51,10 @@ app.add_middleware(
 wifi_sim: Optional[WiFiRSSISimulator] = None
 signal_processor: Optional[SignalProcessor] = None
 ml_models: Optional[PeopleDetectorML] = None
+room_mapper: Optional[RoomLayoutMapper] = None
+wall_visualizer: Optional[WallVisualizer] = None
 latest_detections: Dict[str, any] = {}
+latest_layout: Optional[RoomLayout] = None
 websocket_clients: List[WebSocket] = []
 
 
@@ -91,6 +101,8 @@ async def startup_event():
     wifi_sim = WiFiRSSISimulator(num_detectors=4)
     signal_processor = SignalProcessor()
     ml_models = PeopleDetectorML()
+    room_mapper = RoomLayoutMapper(room_size=(10.0, 10.0))
+    wall_visualizer = WallVisualizer()
 
     # Try to load pre-trained models
     ml_models.load_models()
@@ -393,6 +405,196 @@ async def simulate_continuous_detection():
         scenario_idx = (scenario_idx + 1) % len(scenarios)
 
         await asyncio.sleep(5)  # Brief pause between scenarios
+
+
+# === Room Layout Endpoints ===
+
+@app.get("/api/v1/room-layout")
+async def get_room_layout():
+    """
+    Return current detected room layout.
+
+    Returns:
+        Room layout with walls, dimensions, corners, etc.
+    """
+    global latest_layout
+
+    if latest_layout is None:
+        # Generate sample layout if none exists
+        logger.info("No layout detected yet, generating sample...")
+        sample_grid = create_sample_wall_grid(room_type="rectangular")
+
+        detector_positions = [
+            (2.0, 2.0),
+            (8.0, 2.0),
+            (2.0, 8.0),
+            (8.0, 8.0)
+        ]
+
+        latest_layout = room_mapper.walls_to_layout(sample_grid, detector_positions)
+        latest_layout = room_mapper.optimize_layout(latest_layout)
+
+    return latest_layout.to_dict()
+
+
+@app.get("/api/v1/room-layout/floorplan")
+async def get_floorplan():
+    """
+    Return SVG floorplan for dashboard.
+
+    Returns:
+        SVG string of floorplan
+    """
+    global latest_layout
+
+    if latest_layout is None:
+        # Get or create layout
+        await get_room_layout()
+
+    svg_string = generate_svg_floorplan(latest_layout)
+
+    return {
+        "svg": svg_string,
+        "timestamp": datetime.now().isoformat()
+    }
+
+
+@app.post("/api/v1/room-layout/calibrate")
+async def calibrate_room_layout():
+    """
+    Trigger room layout detection and mapping.
+
+    Simulates wall detection and creates a new room layout.
+    In production, this would trigger actual WiFi-based wall detection.
+
+    Returns:
+        Calibration status and detected layout
+    """
+    global latest_layout
+
+    logger.info("Starting room layout calibration...")
+
+    # Simulate wall detection
+    # In production, this would collect WiFi RSSI data and detect walls
+    sample_grid = create_sample_wall_grid(room_type="rectangular")
+
+    detector_positions = [
+        (2.0, 2.0),
+        (8.0, 2.0),
+        (2.0, 8.0),
+        (8.0, 8.0)
+    ]
+
+    # Convert to layout
+    latest_layout = room_mapper.walls_to_layout(sample_grid, detector_positions)
+
+    # Optimize layout
+    latest_layout = room_mapper.optimize_layout(latest_layout)
+
+    # Generate visualizations
+    output_dir = Path("docs/floorplan_examples")
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Floorplan image
+    wall_visualizer.generate_floorplan_image(
+        latest_layout,
+        str(output_dir / "latest_floorplan.png")
+    )
+
+    # 3D view
+    wall_visualizer.generate_3d_room_view(
+        latest_layout,
+        str(output_dir / "latest_3d_view.png")
+    )
+
+    # Heatmap
+    wall_visualizer.generate_heatmap(
+        sample_grid,
+        str(output_dir / "latest_heatmap.png")
+    )
+
+    # Save layout data
+    latest_layout.save(str(output_dir / "latest_layout.json"))
+
+    logger.info(f"Calibration complete: {len(latest_layout.walls)} walls detected")
+
+    return {
+        "status": "success",
+        "message": "Room layout calibration complete",
+        "walls_detected": len(latest_layout.walls),
+        "area_m2": latest_layout.area,
+        "corners": len(latest_layout.corners),
+        "timestamp": datetime.now().isoformat(),
+        "layout": latest_layout.to_dict()
+    }
+
+
+@app.get("/api/v1/room-layout/heatmap")
+async def get_wall_heatmap():
+    """
+    Return wall detection probability heatmap.
+
+    Returns:
+        Heatmap visualization data
+    """
+    global latest_layout
+
+    # Generate sample grid if no layout
+    if latest_layout is None:
+        await get_room_layout()
+
+    # Create sample probability grid
+    sample_grid = create_sample_wall_grid(room_type="rectangular")
+
+    # Generate heatmap
+    output_path = "docs/floorplan_examples/api_heatmap.png"
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+
+    wall_visualizer.generate_heatmap(
+        sample_grid,
+        output_path,
+        "Wall Detection Probability Heatmap"
+    )
+
+    return {
+        "status": "success",
+        "heatmap_path": output_path,
+        "timestamp": datetime.now().isoformat(),
+        "grid_shape": sample_grid.shape,
+        "description": "Wall detection probability heatmap (blue=low, red=high)"
+    }
+
+
+@app.get("/api/v1/room-layout/images")
+async def get_layout_images():
+    """
+    Get list of available layout visualization images.
+
+    Returns:
+        List of image paths and metadata
+    """
+    output_dir = Path("docs/floorplan_examples")
+
+    if not output_dir.exists():
+        return {
+            "images": [],
+            "message": "No layout images available"
+        }
+
+    image_files = []
+    for ext in ['*.png', '*.jpg', '*.svg']:
+        for img_path in output_dir.glob(ext):
+            image_files.append({
+                "name": img_path.name,
+                "path": str(img_path),
+                "size": img_path.stat().st_size,
+                "modified": datetime.fromtimestamp(img_path.stat().st_mtime).isoformat()
+            })
+
+    return {
+        "images": sorted(image_files, key=lambda x: x['modified'], reverse=True),
+        "count": len(image_files)
+    }
 
 
 # === Main Entry Point ===

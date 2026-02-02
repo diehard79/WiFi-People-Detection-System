@@ -1,0 +1,13 @@
+{
+  "train_accuracy": 0.983,
+  "val_accuracy": 0.21,
+  "n_features": 11,
+  "n_samples": 5000,
+  "materials": [
+    "concrete",
+    "drywall",
+    "wood",
+    "metal",
+    "glass"
+  ]
+}

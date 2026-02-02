@@ -1,0 +1,111 @@
+<svg baseProfile="full" height="800px" version="1.1" viewBox="0 0 800 800" width="800px" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs /><rect fill="white" height="800" width="800" x="0" y="0" /><text font-size="24" font-weight="bold" text-anchor="middle" x="400" y="30">Room Layout - 98.3m²</text><line stroke="#808080" stroke-opacity="0.9066696392633539" stroke-width="7.5" x1="0.0" x2="794.5816509333702" y1="728.0" y2="728.0"><title>Wall: concrete
+Length: 9.93m
+Thickness: 15.0cm
+Confidence: 90.7%</title></line><line stroke="#808080" stroke-opacity="0.9207662990249297" stroke-width="7.5" x1="8.0" x2="8.00000000000005" y1="0.0" y2="795.2659932374829"><title>Wall: concrete
+Length: 9.94m
+Thickness: 15.0cm
+Confidence: 92.1%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8838962045998677" stroke-width="7.5" x1="712.0" x2="712.0" y1="0.0" y2="796.0301501827679"><title>Wall: metal
+Length: 9.95m
+Thickness: 15.0cm
+Confidence: 88.4%</title></line><line stroke="#808080" stroke-opacity="0.9010363615710135" stroke-width="7.5" x1="16.0" x2="16.00000000000005" y1="784.0" y2="-1.997455466619158"><title>Wall: concrete
+Length: 9.82m
+Thickness: 15.0cm
+Confidence: 90.1%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8857608437230692" stroke-width="7.5" x1="32.0" x2="32.000000000000014" y1="576.0" y2="785.3800372528384"><title>Wall: metal
+Length: 2.62m
+Thickness: 15.0cm
+Confidence: 88.6%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8924333070135588" stroke-width="7.5" x1="0.0" x2="4.8016150602588094e-14" y1="0.0" y2="784.1632483099422"><title>Wall: metal
+Length: 9.80m
+Thickness: 15.0cm
+Confidence: 89.2%</title></line><line stroke="#808080" stroke-opacity="0.9266840965026857" stroke-width="7.5" x1="8.0" x2="786.0179946505093" y1="0.0" y2="0.0"><title>Wall: concrete
+Length: 9.73m
+Thickness: 15.0cm
+Confidence: 92.7%</title></line><line stroke="#808080" stroke-opacity="0.9044860879801571" stroke-width="7.5" x1="8.0" x2="784.3710453127424" y1="48.00000000000001" y2="48.00000000000001"><title>Wall: concrete
+Length: 9.70m
+Thickness: 15.0cm
+Confidence: 90.4%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8831066699011905" stroke-width="7.5" x1="96.00000000000001" x2="784.7437840009883" y1="792.0" y2="792.0"><title>Wall: metal
+Length: 8.61m
+Thickness: 15.0cm
+Confidence: 88.3%</title></line><line stroke="#808080" stroke-opacity="0.9304249068846946" stroke-width="7.5" x1="8.0" x2="784.3710453127424" y1="744.0" y2="744.0"><title>Wall: concrete
+Length: 9.70m
+Thickness: 15.0cm
+Confidence: 93.0%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8937433665043214" stroke-width="7.5" x1="416.0" x2="784.086946250475" y1="8.0" y2="8.0"><title>Wall: metal
+Length: 4.60m
+Thickness: 15.0cm
+Confidence: 89.4%</title></line><line stroke="#808080" stroke-opacity="0.9020492692701311" stroke-width="7.5" x1="432.0" x2="584.0" y1="720.0" y2="720.0"><title>Wall: concrete
+Length: 1.90m
+Thickness: 15.0cm
+Confidence: 90.2%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8879162247128036" stroke-width="7.5" x1="728.0" x2="728.0" y1="344.0" y2="440.0"><title>Wall: metal
+Length: 1.20m
+Thickness: 15.0cm
+Confidence: 88.8%</title></line><line stroke="#808080" stroke-opacity="0.9030358623695804" stroke-width="7.5" x1="56.00000000000001" x2="56.00000000000002" y1="480.0" y2="191.55589796288092"><title>Wall: concrete
+Length: 3.61m
+Thickness: 15.0cm
+Confidence: 90.3%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8991831630679835" stroke-width="7.5" x1="424.00000000000006" x2="776.0000000000001" y1="792.0" y2="792.0"><title>Wall: metal
+Length: 4.40m
+Thickness: 15.0cm
+Confidence: 89.9%</title></line><line stroke="#808080" stroke-opacity="0.9030189936759605" stroke-width="7.5" x1="16.0" x2="640.0512799442045" y1="8.0" y2="8.0"><title>Wall: concrete
+Length: 7.80m
+Thickness: 15.0cm
+Confidence: 90.3%</title></line><line stroke="#808080" stroke-opacity="0.9060831906071922" stroke-width="7.5" x1="248.0" x2="776.5451730930859" y1="792.0" y2="792.0"><title>Wall: concrete
+Length: 6.61m
+Thickness: 15.0cm
+Confidence: 90.6%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8962151512139321" stroke-width="7.5" x1="24.000000000000004" x2="24.000000000000036" y1="512.0" y2="14.968813855709868"><title>Wall: metal
+Length: 6.21m
+Thickness: 15.0cm
+Confidence: 89.6%</title></line><line stroke="#808080" stroke-opacity="0.9084164126796088" stroke-width="7.5" x1="720.0" x2="720.0" y1="224.00000000000003" y2="784.0571399419885"><title>Wall: concrete
+Length: 7.00m
+Thickness: 15.0cm
+Confidence: 90.8%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8991042241699206" stroke-width="7.5" x1="16.0" x2="320.9458968407347" y1="16.0" y2="16.0"><title>Wall: metal
+Length: 3.81m
+Thickness: 15.0cm
+Confidence: 89.9%</title></line><line stroke="#808080" stroke-opacity="0.9150221167683268" stroke-width="7.5" x1="56.00000000000001" x2="56.00000000000002" y1="336.0" y2="664.3900120283807"><title>Wall: concrete
+Length: 4.10m
+Thickness: 15.0cm
+Confidence: 91.5%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8859476184117672" stroke-width="7.5" x1="8.0" x2="328.39975031201266" y1="736.0000000000001" y2="736.0000000000001"><title>Wall: metal
+Length: 4.00m
+Thickness: 15.0cm
+Confidence: 88.6%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8648092847255471" stroke-width="7.5" x1="784.0" x2="784.0" y1="584.0" y2="7.999999999999972"><title>Wall: metal
+Length: 7.20m
+Thickness: 15.0cm
+Confidence: 86.5%</title></line><line stroke="#C0C0C0" stroke-opacity="0.8962707874337619" stroke-width="7.5" x1="736.0000000000001" x2="736.0000000000001" y1="784.0" y2="496.0"><title>Wall: metal
+Length: 3.60m
+Thickness: 15.0cm
+Confidence: 89.6%</title></line><line stroke="#808080" stroke-opacity="0.9157516266026988" stroke-width="7.5" x1="280.0" x2="624.0" y1="32.0" y2="32.0"><title>Wall: concrete
+Length: 4.30m
+Thickness: 15.0cm
+Confidence: 91.6%</title></line><line stroke="#C0C0C0" stroke-opacity="0.892373085746882" stroke-width="7.5" x1="16.0" x2="16.00000000000004" y1="144.0" y2="777.2645576692257"><title>Wall: metal
+Length: 7.92m
+Thickness: 15.0cm
+Confidence: 89.2%</title></line><line stroke="#808080" stroke-opacity="0.9242854934847268" stroke-width="7.5" x1="16.0" x2="472.0" y1="24.000000000000004" y2="24.000000000000004"><title>Wall: concrete
+Length: 5.70m
+Thickness: 15.0cm
+Confidence: 92.4%</title></line><line stroke="#808080" stroke-opacity="0.914568724088002" stroke-width="7.5" x1="736.0000000000001" x2="736.0000000000001" y1="312.0" y2="8.000000000000007"><title>Wall: concrete
+Length: 3.80m
+Thickness: 15.0cm
+Confidence: 91.5%</title></line><line stroke="#808080" stroke-opacity="0.9229952316846596" stroke-width="7.5" x1="288.0" x2="536.5155930721451" y1="728.0" y2="728.0"><title>Wall: concrete
+Length: 3.11m
+Thickness: 15.0cm
+Confidence: 92.3%</title></line><polygon fill="red" points="160.0,150.0 150.0,170.0 170.0,170.0" stroke="black"><title>Detector 1
+Position: (2.0, 2.0)</title></polygon><polygon fill="red" points="640.0,150.0 630.0,170.0 650.0,170.0" stroke="black"><title>Detector 2
+Position: (8.0, 2.0)</title></polygon><polygon fill="red" points="160.0,630.0 150.0,650.0 170.0,650.0" stroke="black"><title>Detector 3
+Position: (2.0, 8.0)</title></polygon><polygon fill="red" points="640.0,630.0 630.0,650.0 650.0,650.0" stroke="black"><title>Detector 4
+Position: (8.0, 8.0)</title></polygon><circle cx="8.000000000000044" cy="728.0" fill="blue" r="5" stroke="black"><title>Corner 1
+Position: (0.1, 9.1)</title></circle><circle cx="712.0" cy="728.0" fill="blue" r="5" stroke="black"><title>Corner 2
+Position: (8.9, 9.1)</title></circle><circle cx="32.000000000000014" cy="728.0" fill="blue" r="5" stroke="black"><title>Corner 3
+Position: (0.4, 9.1)</title></circle><circle cx="736.0000000000002" cy="728.0" fill="blue" r="5" stroke="black"><title>Corner 4
+Position: (9.2, 9.1)</title></circle><circle cx="8.0" cy="0.0" fill="blue" r="5" stroke="black"><title>Corner 5
+Position: (0.1, 0.0)</title></circle><circle cx="8.000000000000004" cy="48.00000000000001" fill="blue" r="5" stroke="black"><title>Corner 6
+Position: (0.1, 0.6)</title></circle><circle cx="8.000000000000046" cy="744.0" fill="blue" r="5" stroke="black"><title>Corner 7
+Position: (0.1, 9.3)</title></circle><circle cx="712.0" cy="0.0" fill="blue" r="5" stroke="black"><title>Corner 8
+Position: (8.9, 0.0)</title></circle><circle cx="712.0" cy="48.00000000000001" fill="blue" r="5" stroke="black"><title>Corner 9
+Position: (8.9, 0.6)</title></circle><circle cx="712.0" cy="792.0" fill="blue" r="5" stroke="black"><title>Corner 10
+Position: (8.9, 9.9)</title></circle><circle cx="712.0" cy="744.0" fill="blue" r="5" stroke="black"><title>Corner 11
+Position: (8.9, 9.3)</title></circle><circle cx="16.000000000000046" cy="15.999999999999943" fill="blue" r="5" stroke="black"><title>Corner 12
+Position: (0.2, 0.2)</title></circle><circle cx="32.000000000000014" cy="744.0" fill="blue" r="5" stroke="black"><title>Corner 13
+Position: (0.4, 9.3)</title></circle><circle cx="24.00000000000003" cy="48.00000000000001" fill="blue" r="5" stroke="black"><title>Corner 14
+Position: (0.3, 0.6)</title></circle><circle cx="784.0000000000002" cy="48.00000000000001" fill="blue" r="5" stroke="black"><title>Corner 15
+Position: (9.8, 0.6)</title></circle><circle cx="736.0" cy="48.00000000000001" fill="blue" r="5" stroke="black"><title>Corner 16
+Position: (9.2, 0.6)</title></circle><circle cx="736.0000000000001" cy="744.0" fill="blue" r="5" stroke="black"><title>Corner 17
+Position: (9.2, 9.3)</title></circle><circle cx="784.0" cy="8.0" fill="blue" r="5" stroke="black"><title>Corner 18
+Position: (9.8, 0.1)</title></circle><circle cx="736.0000000000001" cy="8.0" fill="blue" r="5" stroke="black"><title>Corner 19
+Position: (9.2, 0.1)</title></circle><text font-size="16" font-weight="bold" x="20" y="680">Legend:</text><polygon fill="red" points="30,700 25,710 35,710" /><text font-size="14" x="50" y="710">WiFi Detectors</text><circle cx="30" cy="730" fill="blue" r="5" /><text font-size="14" x="50" y="735">Corners</text><text font-size="14" text-anchor="middle" x="400" y="790">10.0m</text></svg>
